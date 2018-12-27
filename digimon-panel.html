@@ -1,0 +1,43 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="bower_components/correct-component/correct-component.html">
+
+<dom-module id="digimon-panel">
+  <template>
+    <style>
+      :host {
+        display: flex;
+        justify-content: space-around;
+        flex-flow: row wrap;
+      }
+    </style>
+    <dom-repeat items="[[digimons]]" as="digimon">
+      <template>
+        <correct-component class="card" digimon="[[digimon]]"></correct-component>
+      </template>
+    </dom-repeat>
+  </template>
+
+  <script>
+    /**
+     * `digimon-panel`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class DigimonPanel extends Polymer.Element {
+      static get is() { return 'digimon-panel'; }
+      static get properties() {
+        return {
+          digimons: {
+            type: Array,
+            value: []
+          }
+        };
+      }
+    }
+
+    window.customElements.define(DigimonPanel.is, DigimonPanel);
+  </script>
+</dom-module>
